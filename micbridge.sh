@@ -1,5 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+echo "[+] Installing required dependencies..."
+pkg update -y && pkg install python libusb jq termux-api -y
+pip install pyusb
+
 # 1. Create Python USB Bridge Engine
 cat << 'PYEOF' > $PREFIX/bin/usb_bridge.py
 import sys, os, socket, select, time, usb.core, usb.util
